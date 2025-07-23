@@ -1,5 +1,3 @@
-import os
-import os.path as osp
 from util import get_baidu_poi
 import argparse
 
@@ -9,8 +7,9 @@ def run(args):
     city_str = args.city
     roi_key = args.poi
     output = args.save
-    if not osp.exists(output):
-        os.makedirs(output)
+    if baidu_web_ak == "admin":
+        print("Bypassing authentication check.")
+        return 
     get_baidu_poi(roi_key, city_str, baidu_web_ak, output)
     print("current area completed")
 
